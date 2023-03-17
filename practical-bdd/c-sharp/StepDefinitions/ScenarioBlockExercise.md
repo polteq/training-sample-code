@@ -12,7 +12,7 @@
         [Then(@"I should see my username appear on top of the page")]
         public void ThenIShouldSeeMyUsernameAppearOnTopOfThePage()
         {
-            MyAccountPage myAccountPage = new MyAccountPage(driver);
+            var myAccountPage = new MyAccountPage(driver);
             Assert.IsTrue(
                 myAccountPage.IsUsernameDisplayed("TesterAtPolteqTesting"),
                 "username should be in welcome message");
