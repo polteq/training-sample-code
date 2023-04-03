@@ -1,15 +1,17 @@
 package providedtestcode;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class AddProductToCartConfirmation {
 
@@ -20,16 +22,17 @@ public class AddProductToCartConfirmation {
     public void AddProductToCartConfirmationTest() {
 
         // -- @Given( "I'm on the VGP Shop homepage" )
-        // Create driver
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
-        driver = new ChromeDriver(options);
-        myWaitVar = new WebDriverWait(driver, 20);
+
+        // Create driver / browser
+        driver = new ChromeDriver(); // Create Chrome driver
+        // driver = new EdgeDriver();  // Create Edge driver
+        // driver = new FirefoxDriver(); // Create Firefox driver
+
+        myWaitVar = new WebDriverWait(driver, Duration.ofSeconds(20));
+        driver.manage().window().maximize();
 
         // Open the website
         driver.get("https://vgp-shop.polteq-testing.com/");
-        driver.manage().window().maximize();
 
 
         // -- @When( "I go to the SHOP" )
@@ -46,16 +49,16 @@ public class AddProductToCartConfirmation {
 
         // -- @Then( "I should get a confirmation that the product is added to the shopping cart" )
         myWaitVar.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".woocommerce-message")));
-        Assert.assertTrue("Check if empty element is visible",
-                driver.findElement(By.cssSelector(".woocommerce-message")).isDisplayed());
-
+        Assertions.assertTrue(driver.findElement(By.cssSelector(".woocommerce-message")).isDisplayed(),
+                "Check if empty element is visible");
 
         // -- @But( "I should not be taken directly to my shopping cart" )
         myWaitVar.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a.button.checkout")));
-        Assert.assertTrue("Check if the button to be taken to the checkout is shown",
-                driver.findElement(By.cssSelector("a.button.checkout")).isDisplayed());
+        Assertions.assertTrue(driver.findElement(By.cssSelector("a.button.checkout")).isDisplayed(),
+                "Check if the button to be taken to the checkout is shown");
+
+        // quit driver / browser
         driver.quit();
 
     }
-
 }
