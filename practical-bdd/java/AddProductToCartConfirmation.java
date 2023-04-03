@@ -1,7 +1,7 @@
 package providedtestcode;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -49,13 +49,13 @@ public class AddProductToCartConfirmation {
 
         // -- @Then( "I should get a confirmation that the product is added to the shopping cart" )
         myWaitVar.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".woocommerce-message")));
-        Assertions.assertTrue(driver.findElement(By.cssSelector(".woocommerce-message")).isDisplayed(),
-                "Check if empty element is visible");
+        Assert.assertTrue("Check if empty element is visible",
+                driver.findElement(By.cssSelector(".woocommerce-message")).isDisplayed());
 
         // -- @But( "I should not be taken directly to my shopping cart" )
         myWaitVar.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a.button.checkout")));
-        Assertions.assertTrue(driver.findElement(By.cssSelector("a.button.checkout")).isDisplayed(),
-                "Check if the button to be taken to the checkout is shown");
+        Assert.assertTrue("Check if the button to be taken to the checkout is shown",
+                driver.findElement(By.cssSelector("a.button.checkout")).isDisplayed());
 
         // quit driver / browser
         driver.quit();
