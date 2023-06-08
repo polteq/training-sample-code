@@ -1,0 +1,186 @@
+{
+    "type": "object",
+    "properties": {
+      "date": {
+        "description": "The date the object was published, in the site's timezone.",
+        "type": "string"
+      },
+      "date_gmt": {
+        "description": "The date the object was published, as GMT.",
+        "type": "string"
+      },
+      "guid": {
+        "description": "The globally unique identifier for the object.",
+        "type": "object",
+        "properties": {
+          "raw": {
+            "description": "GUID for the object, as it exists in the database.",
+            "type": "string"
+          },
+          "rendered": {
+            "description": "GUID for the object, transformed for display.",
+            "type": "string"
+          }
+        }
+      },
+      "id": {
+        "description": "Unique identifier for the object.",
+        "type": "integer"
+      },
+      "link": {
+        "description": "URL to the object.",
+        "type": "string",
+        "format": "uri"
+      },
+      "modified": {
+        "description": "The date the object was last modified, in the site's timezone.",
+        "type": "string"
+      },
+      "modified_gmt": {
+        "description": "The date the object was last modified, as GMT.",
+        "type": "string"
+      },
+      "slug": {
+        "description": "An alphanumeric identifier for the object unique to its type.",
+        "type": "string"
+      },
+      "status": {
+        "description": "A named status for the object.",
+        "type": "string",
+        "enum": [
+          "publish",
+          "future",
+          "draft",
+          "pending",
+          "private"
+        ]
+      },
+      "type": {
+        "description": "Type of Post for the object.",
+        "type": "string"
+      },
+      "password": {
+        "description": "A password to protect access to the content and excerpt.",
+        "type": "string"
+      },
+      "title": {
+        "description": "The title for the object.",
+        "type": "object",
+        "properties": {
+          "raw": {
+            "description": "Title for the object, as it exists in the database.",
+            "type": "string"
+          },
+          "rendered": {
+            "description": "HTML title for the object, transformed for display.",
+            "type": "string"
+          }
+        }
+      },
+      "content": {
+        "description": "The content for the object.",
+        "type": "object",
+        "properties": {
+          "raw": {
+            "description": "Content for the object, as it exists in the database.",
+            "type": "string"
+          },
+          "rendered": {
+            "description": "HTML content for the object, transformed for display.",
+            "type": "string"
+          },
+          "protected": {
+            "description": "Whether the content is protected with a password.",
+            "type": "boolean"
+          }
+        }
+      },
+      "author": {
+        "description": "The ID for the author of the object.",
+        "type": "integer"
+      },
+      "excerpt": {
+        "description": "The excerpt for the object.",
+        "type": "object",
+        "properties": {
+          "raw": {
+            "description": "Excerpt for the object, as it exists in the database.",
+            "type": "string"
+          },
+          "rendered": {
+            "description": "HTML excerpt for the object, transformed for display.",
+            "type": "string"
+          },
+          "protected": {
+            "description": "Whether the excerpt is protected with a password.",
+            "type": "boolean"
+          }
+        }
+      },
+      "featured_media": {
+        "description": "The ID of the featured media for the object.",
+        "type": "integer"
+      },
+      "comment_status": {
+        "description": "Whether or not comments are open on the object.",
+        "type": "string",
+        "enum": [
+          "open",
+          "closed"
+        ]
+      },
+      "ping_status": {
+        "description": "Whether or not the object can be pinged.",
+        "type": "string",
+        "enum": [
+          "open",
+          "closed"
+        ]
+      },
+      "format": {
+        "description": "The format for the object.",
+        "type": "string",
+        "enum": [
+          "standard",
+          "aside",
+          "chat",
+          "gallery",
+          "link",
+          "image",
+          "quote",
+          "status",
+          "video",
+          "audio"
+        ]
+      },
+      "sticky": {
+        "description": "Whether or not the object should be treated as sticky.",
+        "type": "boolean"
+      },
+      "template": {
+        "description": "The theme file to use to display the object.",
+        "type": "string"
+      },
+      "categories": {
+        "description": "The terms assigned to the object in the category taxonomy.",
+        "type": "array",
+        "items": {
+          "type": "integer"
+        }
+      },
+      "tags": {
+        "description": "The terms assigned to the object in the post_tag taxonomy.",
+        "type": "array",
+        "items": {
+          "type": "integer"
+        }
+      }
+    },
+    "required": [
+      "id",
+      "author",
+      "title",
+      "content"
+    ]
+  }
+  
