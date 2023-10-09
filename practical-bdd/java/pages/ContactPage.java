@@ -1,6 +1,6 @@
 package pages;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -79,7 +79,7 @@ public class ContactPage extends BasePage {
                 stayLocationNee.click();
                 break;
             default:
-                Assert.fail("invalid stay at park value " + stayAtPark);
+                Assertions.fail("invalid stay at park value " + stayAtPark);
         }
     }
 
