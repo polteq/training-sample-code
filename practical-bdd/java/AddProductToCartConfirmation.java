@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -18,7 +20,7 @@ public class AddProductToCartConfirmation {
 
     @Test
     @DisplayName("Linear test script for test: Add product to cart confirmation")
-    public void AddProductToCartConfirmationTest() {
+    public void addProductToCartConfirmationTest() {
 
         // -- @Given( "I'm on the VGP Shop homepage" )
 
@@ -44,9 +46,9 @@ public class AddProductToCartConfirmation {
 
 
         // -- @Then( "I should get a confirmation that the product is added to the shopping cart" )
-        myWaitVar.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".woocommerce-message")));
+        myWaitVar.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".wc-block-components-notice-banner__content")));
         Assertions.assertTrue(
-                driver.findElement(By.cssSelector(".woocommerce-message")).isDisplayed(),
+                driver.findElement(By.cssSelector(".wc-block-components-notice-banner__content")).isDisplayed(),
                 "Check if empty element is visible");
 
         // -- @But( "I should not be taken directly to my shopping cart" )
