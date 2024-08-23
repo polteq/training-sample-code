@@ -23,7 +23,7 @@ public class DriverFactory {
     private static WebDriver createChromeDriver() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
-
+        options.addArguments("--disable-search-engine-choice-screen");
         return new ChromeDriver(options);
     }
 
