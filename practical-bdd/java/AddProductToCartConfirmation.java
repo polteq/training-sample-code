@@ -28,7 +28,8 @@ public class AddProductToCartConfirmation {
         //
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
-
+        options.addArguments("--disable-search-engine-choice-screen");
+        
         driver=  new ChromeDriver(options); // Create Chrome driver; browser visible
         //driver = new EdgeDriver();  // Create Edge driver
         //driver = new FirefoxDriver(); // Create Firefox driver
