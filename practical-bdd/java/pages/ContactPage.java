@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class ContactPage extends BasePage {
 
@@ -37,10 +38,10 @@ public class ContactPage extends BasePage {
     @FindBy(css = "input#send-button")
     private WebElement sendButton;
 
-    private final String messageSentIndicatorLocator = "form.sent div.wpcf7-response-output";
+    private final String responseOutputLocator = "div.wpcf7-response-output";
 
-    @FindBy(css = messageSentIndicatorLocator)
-    private WebElement messageSentIndicator;
+    @FindBy(css = "form.sent " + responseOutputLocator)
+    private List<WebElement> messageSentIndicator;
 
     public ContactPage(WebDriver driver) {
         super(driver);
@@ -80,8 +81,8 @@ public class ContactPage extends BasePage {
      */
     public boolean isMessageSent() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(messageSentIndicatorLocator)));
-        return messageSentIndicator.isDisplayed();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(responseOutputLocator)));
+        return !messageSentIndicator.isEmpty();
     }
 
     private void selectStayAtPark(String stayAtPark) {
