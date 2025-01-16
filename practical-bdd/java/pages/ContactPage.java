@@ -37,7 +37,7 @@ public class ContactPage extends BasePage {
     @FindBy(css = "input#send-button")
     private WebElement sendButton;
 
-    private final String messageSentIndicatorLocator = "div.wpcf7-response-output";
+    private final String messageSentIndicatorLocator = "form.sent div.wpcf7-response-output";
 
     @FindBy(css = messageSentIndicatorLocator)
     private WebElement messageSentIndicator;
@@ -46,7 +46,17 @@ public class ContactPage extends BasePage {
         super(driver);
     }
 
-    public void sendContactMessage (
+    /**
+     * Sends a contact message by filling out the form and clicking the send button.
+     *
+     * @param stayAtPark the stay location value, either "ja" or "nee"
+     * @param name the name of the sender
+     * @param email the email address of the sender
+     * @param subject the subject of the message
+     * @param message the content of the message
+     * @param department the department to which the message is sent
+     */
+    public void sendContactMessage(
             String stayAtPark,
             String name,
             String email,
@@ -63,6 +73,11 @@ public class ContactPage extends BasePage {
         sendButton.click();
     }
 
+    /**
+     * Checks if the contact message was sent successfully by verifying the visibility of the message sent indicator.
+     *
+     * @return true if the message sent indicator is displayed, false otherwise
+     */
     public boolean isMessageSent() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(messageSentIndicatorLocator)));
@@ -72,14 +87,9 @@ public class ContactPage extends BasePage {
     private void selectStayAtPark(String stayAtPark) {
 
         switch (stayAtPark.toLowerCase()) {
-            case "ja":
-                stayLocationJa.click();
-                break;
-            case "nee":
-                stayLocationNee.click();
-                break;
-            default:
-                Assertions.fail("invalid stay at park value " + stayAtPark);
+            case "ja" -> stayLocationJa.click();
+            case "nee" -> stayLocationNee.click();
+            default -> Assertions.fail("invalid stay at park value " + stayAtPark);
         }
     }
 
