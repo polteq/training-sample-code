@@ -1,14 +1,12 @@
 using OpenQA.Selenium;
 
-namespace Polteq.Training.PracticalBDD.PageObjects
+namespace Polteq.Training.Practical.BDD.PageObjects
 {
-    public class HomePage : BasePage
+    public class HomePage(IWebDriver driver) : BasePage(driver)
     {
         private IWebElement MyAccountButton => driver.FindElement(By.CssSelector("li.my-account a"));
         private IWebElement ContactUs => driver.FindElement(By.CssSelector("li.contact-us a"));
         private IReadOnlyCollection<IWebElement> RecentPosts => driver.FindElements(By.CssSelector("section#recent-posts-2 li a"));
-
-        public HomePage(IWebDriver driver) : base(driver) { }
 
         public void ClickMyAccount()
         {

@@ -1,8 +1,8 @@
 using OpenQA.Selenium;
 
-namespace Polteq.Training.PracticalBDD.PageObjects
+namespace Polteq.Training.Practical.BDD.PageObjects
 {
-    public class MyAccountPage : BasePage
+    public class MyAccountPage(IWebDriver driver) : BasePage(driver)
     {
         private IWebElement EmailTextfield => driver.FindElement(By.CssSelector("input#username"));
         private IWebElement PasswordTextfield => driver.FindElement(By.CssSelector("input#password"));
@@ -13,8 +13,6 @@ namespace Polteq.Training.PracticalBDD.PageObjects
         private IWebElement CreateNewUserButton => driver.FindElement(By.CssSelector("button[name='register']"));
         private IWebElement ErrorMessage => driver.FindElement(By.CssSelector("div.woocommerce-notices-wrapper ul.woocommerce-error"));
         private IWebElement MyAccountContent => driver.FindElement(By.CssSelector("div.woocommerce-MyAccount-content"));
-
-        public MyAccountPage(IWebDriver driver) : base(driver) { }
 
         public bool IsErrorMessageDisplayed()
         {

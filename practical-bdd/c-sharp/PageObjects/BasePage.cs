@@ -1,7 +1,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace Polteq.Training.PracticalBDD.PageObjects
+namespace Polteq.Training.Practical.BDD.PageObjects
 {
     public abstract class BasePage
     {
