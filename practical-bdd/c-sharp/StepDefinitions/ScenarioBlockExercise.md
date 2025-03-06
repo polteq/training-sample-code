@@ -13,8 +13,8 @@
         public void ThenIShouldSeeMyUsernameAppearOnTopOfThePage()
         {
             var myAccountPage = new MyAccountPage(driver);
-            Assert.IsTrue(
-                myAccountPage.IsUsernameDisplayed("TesterAtPolteqTesting"),
+            Assert.That(myAccountPage.IsUsernameDisplayed("TesterAtPolteqTesting"),
+                Is.True,
                 "username should be in welcome message");
         }
 ```
