@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test';
-import { BasePage } from './base-page';
+import { BasePage } from './base.page';
 
 export class HomePage extends BasePage {
   private readonly myAccountButton = this.page.locator('li.my-account a');
