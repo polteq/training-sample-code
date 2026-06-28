@@ -1,7 +1,7 @@
 import { test as base, createBdd } from 'playwright-bdd';
-import { HomePage } from '../pages/home-page';
-import { MyAccountPage } from '../pages/my-account-page';
-import { ContactPage } from '../pages/contact-page';
+import { HomePage } from '../pages/home.page';
+import { MyAccountPage } from '../pages/my-account.page';
+import { ContactPage } from '../pages/contact.page';
 
 type Fixtures = {
   homePage: HomePage;
