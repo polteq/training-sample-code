@@ -2,8 +2,8 @@ import { Page } from '@playwright/test';
 import { BasePage } from './base.page';
 
 export class HomePage extends BasePage {
-  private readonly myAccountButton = this.page.locator('li.my-account a');
-  private readonly contactUsButton = this.page.locator('li.contact-us a');
+  private readonly myAccountButton = this.page.locator('#page li.my-account a');
+  private readonly contactUsButton = this.page.locator('#page li.contact-us a');
   private readonly recentPosts = this.page.locator('section#recent-posts-2 li a');
 
   constructor(page: Page) {
