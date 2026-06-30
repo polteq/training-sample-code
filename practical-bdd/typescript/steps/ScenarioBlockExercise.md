@@ -3,7 +3,7 @@
 ```typescript
 When('I log in with valid credentials', async ({ homePage, myAccountPage }) => {
   await homePage.clickMyAccount();
-  await myAccountPage.login("tester@polteq-testing.com", "1!QazXsw2@");
+  await myAccountPage.login("email", "password");
 });
 
 Then('I should see my username appear on top of the page', async ({ myAccountPage }) => {
