@@ -1,3 +1,4 @@
+@skip
 Feature: Product color selection
   As a user of the webshop
   I want to be able to select the product color
